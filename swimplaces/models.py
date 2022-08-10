@@ -22,11 +22,9 @@ class SwimPlace(models.Model):
            ("Not suitable for dogs",
             "Not suitable for dogs"))
     
-    mapotic_id = models.IntegerField()
-    longitude = models.FloatField(min_value=-180,
-                                  max_value=180)
-    latitude = models.FloatField(min_value=-90, 
-                                 max_value=90)
+    mapotic_id = models.IntegerField(unique=True)
+    longitude = models.FloatField()
+    latitude = models.FloatField()
     name = models.CharField(max_length=100)
     category = models.ForeignKey("Category", on_delete=models.PROTECT)
     rating = models.FloatField()

@@ -52,3 +52,7 @@ class SwimPlace(models.Model):
     video = models.URLField()
     dog_swimming = models.CharField(choices=DOGS,
                                     max_length=30)
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=100)

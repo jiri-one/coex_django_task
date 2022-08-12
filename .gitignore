@@ -3,3 +3,4 @@ venv
 zadani.pdf
 swimplaces_export.csv
 secret_key.txt
+.~lock*

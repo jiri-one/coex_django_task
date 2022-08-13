@@ -1,1 +1,21 @@
-# coex_django_task
+# **COex Backend Test Day**
+Objectives:
+- [X] Create an application in Django using any packages/libraries
+- [X] version all source code using GIT
+- [X] design a database model to store the imported data in the next step
+- [X] Let the categories (Category column) be implemented as a linked model
+- [ ] create a management command to import data from the supplied file
+- [ ] create output/listing of internal IDs and names of all locations using
+    - a) REST endpoint (preferred - ideally DRF and JSON format)
+    - b) Django Views
+- [ ] add filtering to the page/endpoint by category and whether the location is available with a dog
+- [ ] create a page/endpoint to display complete data for one location
+- [ ] create a way to add comments to each location
+- [ ] create a page with the statistics of the places that are stored in the DB
+    - Number of places
+    - an overview of the categories and the number of sites in each category
+    - the site with the most comments
+    - farthest place from the centre of the country
+    - number/estimate of English places
+- [ ] on the page/endpoint listing all places, add the current temperature for each place in degrees Celsius (use API from https://open-meteo.com/ for example)
+    - the page should have a mechanism/cache that will query the data only 1 per hour (preventing repeated requests that return the same value)

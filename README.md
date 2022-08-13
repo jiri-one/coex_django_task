@@ -5,7 +5,7 @@ Objectives:
 - [X] design a database model to store the imported data in the next step
 - [X] Let the categories (Category column) be implemented as a linked model
 - [X] create a management command to import data from the supplied file
-- [ ] create output/listing of internal IDs and names of all locations using
+- [X] create output/listing of internal IDs and names of all locations using
     - a) REST endpoint (preferred - ideally DRF and JSON format)
     - b) Django Views
 - [ ] add filtering to the page/endpoint by category and whether the location is available with a dog

@@ -65,6 +65,7 @@ def create_swimplaces(SwimPlace, Category):
                     row[key] = None
             if row["category"]:
                 row["category"] = Category.objects.get(name=row["category"])
+
             swimplace = SwimPlace(**row)
             swimplace.save()
 

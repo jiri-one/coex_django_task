@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<style>
+table, th, td {
+  border:1px solid black;
+}
+</style>
+<body>
+<h2>List of swimplaces</h2>
+{% if swimplaces %}
+	<table style="width:100%">
+		<tr>
+		<th>Internal DJANGO ID</th>
+		<th>Swimplaces</th>
+		</tr>
+    {% for swimplace in swimplaces %}
+		<tr>
+			<td>{{ swimplace.id }}</td>
+			<td>{{ swimplace.name }}</td>
+
+		</tr>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No swimplaces are available.</p>
+{% endif %}
+
+</body>
+</html>

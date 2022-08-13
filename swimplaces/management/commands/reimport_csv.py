@@ -70,3 +70,5 @@ class Command(BaseCommand):
             self.create_categories(Category)
             self.create_swimplaces(SwimPlace, Category)
             self.stdout.write(self.style.SUCCESS(f'Successfully imported file: {self.file}'))
+        else:
+            self.stdout.write(self.style.ERROR('You have to write correct file name.'))

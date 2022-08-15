@@ -10,7 +10,7 @@ Objectives:
     - [X] b) Django Views
 - [ ] add filtering to the page/endpoint by category and whether the location is available with a dog
 - [X] create a page/endpoint to display complete data for one location
-- [ ] create a way to add comments to each location
+- [X] create a way to add comments to each location
 - [ ] create a page with the statistics of the places that are stored in the DB
     - Number of places
     - an overview of the categories and the number of sites in each category

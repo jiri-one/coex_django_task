@@ -48,8 +48,7 @@ class SwimPlace(models.Model):
                                     max_length=30, null=True, blank=True)
     video = models.URLField(null=True, blank=True)
     dog_swimming = models.CharField(choices=DOGS,
-                                    max_length=30, null=True, blank=True)
-    
+                                    max_length=30, null=True, blank=True)  
     def __str__(self):
         return self.name
 
@@ -58,3 +57,9 @@ class Category(models.Model):
     name = models.CharField(max_length=100, unique=True, null=True, blank=True)
     def __str__(self):
         return self.name
+
+class Comment(models.Model):
+    text = models.CharField(max_length=160, null=True, blank=True)
+    swimplace = models.ForeignKey(SwimPlace, related_name='comments', on_delete=models.SET_NULL, null=True, blank=True)
+    def __str__(self):
+        return self.text

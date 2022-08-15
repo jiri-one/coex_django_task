@@ -32,7 +32,7 @@ class Command(BaseCommand):
     help = 'Delete whole DB and import new data from CSV'
     
     def create_categories(self, Category):
-        with open(self.file, "r") as file:
+        with open(self.file, "r", encoding='utf-8') as file:
             reader = csv.DictReader(file, fieldnames=FIELDNAMES, delimiter=';')
             next(reader, None) # skip first line
             for row in reader:
@@ -44,7 +44,7 @@ class Command(BaseCommand):
                         category.save()
 
     def create_swimplaces(self, SwimPlace, Category):
-        with open(self.file, "r") as file:
+        with open(self.file, "r", encoding='utf-8') as file:
             reader = csv.DictReader(file, fieldnames=FIELDNAMES, delimiter=';')
             next(reader, None) # skip first line
             for row in reader:

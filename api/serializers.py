@@ -7,6 +7,7 @@ class SwimPlacesSerializer(serializers.ModelSerializer):
         fields = ["id", "name"]
 
 class OneSwimPlaceSerializer(serializers.ModelSerializer):
+    comments = serializers.StringRelatedField(many=True)
     class Meta:
         model = SwimPlace
         fields = "__all__"

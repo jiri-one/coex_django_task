@@ -9,7 +9,7 @@ Objectives:
     - [X] a) REST endpoint (preferred - ideally DRF and JSON format)
     - [X] b) Django Views
 - [ ] add filtering to the page/endpoint by category and whether the location is available with a dog
-- [ ] create a page/endpoint to display complete data for one location
+- [X] create a page/endpoint to display complete data for one location
 - [ ] create a way to add comments to each location
 - [ ] create a page with the statistics of the places that are stored in the DB
     - Number of places

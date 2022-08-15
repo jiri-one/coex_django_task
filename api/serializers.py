@@ -1,8 +1,12 @@
 from rest_framework import serializers
 from swimplaces.models import SwimPlace, Category
 
-class SwimPlaceSerializer(serializers.ModelSerializer):
+class SwimPlacesSerializer(serializers.ModelSerializer):
     class Meta:
         model = SwimPlace
         fields = ["id", "name"]
-        # fields = "__all__"
+
+class OneSwimPlaceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SwimPlace
+        fields = "__all__"

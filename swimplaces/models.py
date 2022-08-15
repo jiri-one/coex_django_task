@@ -26,7 +26,7 @@ class SwimPlace(models.Model):
     longitude = models.FloatField()
     latitude = models.FloatField()
     name = models.CharField(max_length=100)
-    category = models.ForeignKey("Category", on_delete=models.PROTECT, null=True, blank=True)
+    category = models.ForeignKey("Category", related_name='category', on_delete=models.PROTECT, null=True, blank=True)
     rating = models.FloatField(null=True, blank=True)
     image_url = models.URLField()
     import_id = models.CharField(max_length=20, null=True, blank=True)

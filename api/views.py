@@ -26,8 +26,9 @@ def get_one_swimplace(request, id):
     if request.method == "POST":
         swimplace = SwimPlace.objects.get(id=id)
         # add comment in json form like {"comment": "your comment of place"}
-        comment = Comment(text=request.data["comment"], swimplace=swimplace)
-        comment.save()
+        if "comment" in request.data:
+            comment = Comment(text=request.data["comment"], swimplace=swimplace)
+            comment.save()
         serializer = OneSwimPlaceSerializer(swimplace)
         return Response(serializer.data)
     elif request.method == "GET":

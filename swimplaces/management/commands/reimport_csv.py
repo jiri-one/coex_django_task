@@ -26,6 +26,7 @@ link
 nudist_beach
 video
 dog_swimming
+from_cr_center
 """.strip().split('\n')
 
 class Command(BaseCommand):

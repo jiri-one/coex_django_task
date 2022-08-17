@@ -1,6 +1,9 @@
 from django.db import models
+from haversine import haversine
+
 
 class SwimPlace(models.Model):
+    CR_CENTER = (49.7437572, 15.3386383)     
     REFRESH = (("Restaurant on site",
                 "Restaurant on site"),
                ("No restaurant",
@@ -21,7 +24,7 @@ class SwimPlace(models.Model):
             "Suitable for dogs"),
            ("Not suitable for dogs",
             "Not suitable for dogs"))
-    
+   
     mapotic_id = models.IntegerField(unique=True)
     longitude = models.FloatField()
     latitude = models.FloatField()
@@ -48,7 +51,14 @@ class SwimPlace(models.Model):
                                     max_length=30, null=True, blank=True)
     video = models.URLField(null=True, blank=True)
     dog_swimming = models.CharField(choices=DOGS,
-                                    max_length=30, null=True, blank=True)  
+                                    max_length=30, null=True, blank=True)
+    from_cr_center = models.FloatField(editable=False, default=None, null=True, blank=True)
+    
+    
+    def save(self, *args, **kwarg):
+        self.from_cr_center = haversine(self.CR_CENTER, (float(self.latitude), float(self.longitude)))
+        super(SwimPlace, self).save(*args, **kwarg)
+    
     def __str__(self):
         return self.name
 
@@ -57,6 +67,7 @@ class Category(models.Model):
     name = models.CharField(max_length=100, unique=True, null=True, blank=True)
     def __str__(self):
         return self.name
+
 
 class Comment(models.Model):
     text = models.CharField(max_length=160, null=True, blank=True)

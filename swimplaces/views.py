@@ -1,11 +1,20 @@
 from .models import SwimPlace, Category
 from django.shortcuts import render
 from django.http import HttpResponse
+from .helpers import categories_count
 
 def index(request):
     swimplaces = SwimPlace.objects.all()
     context = {'swimplaces': swimplaces}
     return render(request, 'swimplaces/index.html', context)
+
+def stats(request):
+    nr_of_swimplaces = SwimPlace.objects.count()
+    categories = categories_count()
+    context = {'nr_of_swimplaces': nr_of_swimplaces,
+               'categories': categories,
+                }
+    return render(request, 'swimplaces/stats.html', context)
 
 # def search(request):
 #     if request.method == 'POST':

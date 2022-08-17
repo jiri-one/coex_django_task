@@ -12,9 +12,9 @@ Objectives:
 - [X] create a page/endpoint to display complete data for one location
 - [X] create a way to add comments to each location
 - [ ] create a page with the statistics of the places that are stored in the DB
-    - Number of places
-    - an overview of the categories and the number of sites in each category
-    - the site with the most comments
+    - [X] Number of places
+    - [X] an overview of the categories and the number of sites in each category
+    - [X] the site with the most comments
     - farthest place from the centre of the country
     - number/estimate of English places
 - [ ] on the page/endpoint listing all places, add the current temperature for each place in degrees Celsius (use API from https://open-meteo.com/ for example)

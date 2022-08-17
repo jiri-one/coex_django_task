@@ -6,10 +6,11 @@ table, th, td {
 }
 </style>
 <body>
+<center>
 <h2><center>SwimPlaces statistics</center></h2>
 <b>Number of all SwimPlaces is {{ nr_of_swimplaces }}<b><br><br>
 <b>And SwimPlaces are in this categories:<b>
-<table style="width:100%">
+<table>
 	<tr>
 	<th>Category name:</th>
 	<th>Number of SwimPlaces:</th>
@@ -20,7 +21,9 @@ table, th, td {
 		<td>{{ count }}</td>
 	</tr>
 {% endfor %}
-</table>
-<b>SwimPlace with highest number of comments is <a href="/api/swimplace/{{ sp_with_most_comments }}">{{ sp_with_most_comments }}<b><br><br>
+</table><br>
+<b>SwimPlace with highest number of comments is <a href="/api/swimplace/{{ sp_with_most_comments }}">{{ sp_with_most_comments }}</a><b><br><br>
+<b>	The farthest SwimPlace from the centre of the country is <a href="/api/swimplace/{{ farthers_place_id }}">{{ farthers_place_id }}</a> and the distant is  {{ farthers_place_value }} kilometers.
+</center>
 </body>
 </html>

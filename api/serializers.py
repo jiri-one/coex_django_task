@@ -3,6 +3,7 @@ from swimplaces.models import SwimPlace
 
 class SwimPlacesSerializer(serializers.ModelSerializer):
     category = serializers.StringRelatedField()
+    temperature = serializers.FloatField()
     class Meta:
         model = SwimPlace
         fields = ["id", "name", "category", "dog_swimming"]

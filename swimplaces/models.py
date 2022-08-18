@@ -74,3 +74,10 @@ class Comment(models.Model):
     swimplace = models.ForeignKey(SwimPlace, related_name='comments', on_delete=models.SET_NULL, null=True, blank=True)
     def __str__(self):
         return self.text
+
+class Temperature(models.Model):
+    degree = models.FloatField(null=True, blank=True, default="Not available")
+    update_time = models.DateTimeField(auto_now=True)
+    swimplace = models.ForeignKey(SwimPlace, related_name='temperature', on_delete=models.CASCADE, null=True, blank=True)
+    def __str__(self):
+        return self.swimplace

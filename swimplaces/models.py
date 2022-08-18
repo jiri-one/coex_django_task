@@ -80,4 +80,4 @@ class Temperature(models.Model):
     update_time = models.DateTimeField(auto_now=True)
     swimplace = models.ForeignKey(SwimPlace, related_name='temperature', on_delete=models.CASCADE, null=True, blank=True)
     def __str__(self):
-        return self.swimplace
+        return self.swimplace.name

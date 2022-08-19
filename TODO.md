@@ -1,3 +1,4 @@
 - [ ] rewrite temperature_update asynchronously
 - [ ] rewrite temperature_update like real update, not only delete old temperatures and create new ones
+- [ ] look to code and handle possible exceptions
 - [ ] add tests

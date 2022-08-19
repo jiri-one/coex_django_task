@@ -1,0 +1,3 @@
+- [ ] rewrite temperature_update asynchronously
+- [ ] rewrite temperature_update like real update, not only delete old temperatures and create new ones
+- [ ] add tests

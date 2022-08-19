@@ -2,9 +2,11 @@ from unicodedata import category
 from urllib import response
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from django.views.decorators.cache import cache_page
 from swimplaces.models import SwimPlace, Category, Comment
 from .serializers import SwimPlacesSerializer, OneSwimPlaceSerializer
 
+@cache_page(60 * 120)
 @api_view(["GET", "POST"])
 def get_swimplaces(request):
     if request.method == "POST":

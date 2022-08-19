@@ -57,6 +57,13 @@ CRON_CLASSES = [
     "swimplaces.cron.TemperatureCronJob",
 ]
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'swimplaces-cache',
+    }
+}
+
 ROOT_URLCONF = 'coex_django_task.urls'
 
 TEMPLATES = [

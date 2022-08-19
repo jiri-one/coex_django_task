@@ -17,5 +17,5 @@ Objectives:
     - [X] the site with the most comments
     - [X] farthest place from the centre of the country
     - [X] number/estimate of English places
-- [ ] on the page/endpoint listing all places, add the current temperature for each place in degrees Celsius (use API from https://open-meteo.com/ for example)
-    - the page should have a mechanism/cache that will query the data only 1 per hour (preventing repeated requests that return the same value)
+- [X] on the page/endpoint listing all places, add the current temperature for each place in degrees Celsius (use API from https://open-meteo.com/ for example)
+    - [ ] the page should have a mechanism/cache that will query the data only 1 per hour (preventing repeated requests that return the same value)

@@ -22,7 +22,9 @@ table, th, td {
 	</tr>
 {% endfor %}
 </table><br>
+{% if sp_with_most_comments %}
 <b>SwimPlace with highest number of comments is <a href="/api/swimplace/{{ sp_with_most_comments }}">{{ sp_with_most_comments }}</a></b><br><br>
+{% endif %}
 <b>	The farthest SwimPlace from the centre of the country is <a href="/api/swimplace/{{ farthers_place_id }}">{{ farthers_place_id }}</a> and the distant is  {{ farthers_place_value }} kilometers.</b><br><br>
 <b>The number/estimate of english SwimPlaces is probably cca {{ nr_of_english_swimplaces }}.</b>
 </center>

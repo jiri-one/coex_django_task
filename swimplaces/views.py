@@ -14,7 +14,10 @@ def index(request):
 def stats(request):
     nr_of_swimplaces = SwimPlace.objects.count()
     categories = categories_count()
-    sp_with_most_comments = Comment.objects.values("swimplace").annotate(Count('id')).order_by('-id__count')[0]["swimplace"]
+    try:
+        sp_with_most_comments = Comment.objects.values("swimplace").annotate(Count('id')).order_by('-id__count')[0]["swimplace"]
+    except IndexError: # if no comments added to any swimplace
+        sp_with_most_comments = None
     farthers_place_dict = SwimPlace.objects.values("from_cr_center", "id").order_by("-from_cr_center")[0] # it is a dict in format ie {'from_cr_center': 16077.269150278838, 'id': 1305}
     farthers_place_value, farthers_place_id = farthers_place_dict.values()
     nr_of_english_swimplaces = SwimPlace.objects.filter(latitude__range=(50, 60)).filter(longitude__range=(-8, 1.5)).count()

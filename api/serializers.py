@@ -12,7 +12,7 @@ class TemperatureSerializer(serializers.ModelSerializer):
         fields = ['degree', 'update_time']
 
 class SwimPlacesSerializer(serializers.ModelSerializer):
-    temperature = TemperatureSerializer(many=True, read_only=True)
+    temperature = TemperatureSerializer(read_only=True)
     category = serializers.StringRelatedField()
     class Meta:
         model = SwimPlace

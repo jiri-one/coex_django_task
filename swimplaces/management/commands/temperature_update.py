@@ -12,14 +12,13 @@ class Command(BaseCommand):
         mgr = OWmanager(options)
         try:
             meteo = mgr.get_data()
-        except JSONDecodeError:
+        except (JSONDecodeError, BaseException):
             return None
         return meteo['current_weather']['temperature']
   
     def handle(self, *args, **options):
-        Temperature.objects.all().delete()
         for sp in SwimPlace.objects.all():
             actual_temperature = self.return_temperature(sp.latitude, sp.longitude)
-            temperature = Temperature(degree=actual_temperature, swimplace=sp)
-            temperature.save()
-        self.stdout.write(self.style.SUCCESS(f'Successfully have been writen temperatures'))
+            if actual_temperature:
+                Temperature.objects.update_or_create(swimplace=sp, defaults={ "degree": actual_temperature})
+        self.stdout.write(self.style.SUCCESS(f'Successfully have been writen/updated temperatures'))

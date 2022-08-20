@@ -1,4 +1,5 @@
 from django.core.management.base import BaseCommand, CommandError
+from django.core.cache import cache
 from swimplaces.models import SwimPlace, Temperature
 from openmeteo_py import Options, OWmanager
 from json import JSONDecodeError
@@ -21,4 +22,5 @@ class Command(BaseCommand):
             actual_temperature = self.return_temperature(sp.latitude, sp.longitude)
             if actual_temperature:
                 Temperature.objects.update_or_create(swimplace=sp, defaults={ "degree": actual_temperature})
+        cache.clear() # refresh cache
         self.stdout.write(self.style.SUCCESS(f'Successfully have been writen/updated temperatures'))

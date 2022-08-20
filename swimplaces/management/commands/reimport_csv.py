@@ -4,7 +4,7 @@ import csv
 from pathlib import Path
 
 FIELDNAMES = """
-mapotic_id
+id
 longitude
 latitude
 name
@@ -30,45 +30,27 @@ from_cr_center
 """.strip().split('\n')
 
 class Command(BaseCommand):
-    help = 'Delete whole DB and import new data from CSV'
-    
-    def create_categories(self, Category):
-        with open(self.file, "r", encoding='utf-8') as file:
-            reader = csv.DictReader(file, fieldnames=FIELDNAMES, delimiter=';')
-            next(reader, None) # skip first line
-            for row in reader:
-                if row["category"]: # prevent empty category
-                    try:
-                        category = Category.objects.get(name=row["category"])
-                    except Category.DoesNotExist:
-                        category = Category(name=row["category"])
-                        category.save()
+    help = 'Import/update new data from CSV'
 
     def create_swimplaces(self, SwimPlace, Category):
         with open(self.file, "r", encoding='utf-8') as file:
             reader = csv.DictReader(file, fieldnames=FIELDNAMES, delimiter=';')
             next(reader, None) # skip first line
             for row in reader:
-                for key, value in dict(row).items(): # prevent empty string from csv
-                    if not value:
+                for key, value in dict(row).items(): 
+                    if not value: # prevent empty string from csv
                         row[key] = None
                 if row["category"]:
-                    row["category"] = Category.objects.get(name=row["category"])
-                swimplace = SwimPlace(**row)
-                swimplace.save()
+                    row["category"], _ = Category.objects.get_or_create(name=row["category"], defaults={"name": row["category"]})
+                SwimPlace.objects.update_or_create(id=row["id"], defaults={**row})
 
     def add_arguments(self, parser):
         parser.add_argument('file_name', nargs=1, type=str)
 
     def handle(self, *args, **options):
         if Path(options['file_name'][0]).is_file():
-            # better to handle here file structure ... but for simplicity let it this way
+            # better to handle file structure here ... but for simplicity let it this way
             self.file = options['file_name'][0]
-            # clean all previous imports
-            SwimPlace.objects.all().delete()
-            Category.objects.all().delete()
-            # and then import all
-            self.create_categories(Category)
             self.create_swimplaces(SwimPlace, Category)
             self.stdout.write(self.style.SUCCESS(f'Successfully imported file: {self.file}'))
         else:

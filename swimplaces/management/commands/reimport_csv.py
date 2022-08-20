@@ -4,7 +4,7 @@ import csv
 from pathlib import Path
 
 FIELDNAMES = """
-mapotic_id
+id
 longitude
 latitude
 name

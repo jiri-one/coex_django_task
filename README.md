@@ -19,3 +19,9 @@ Objectives:
     - [X] number/estimate of English places
 - [X] on the page/endpoint listing all places, add the current temperature for each place in degrees Celsius (use API from https://open-meteo.com/ for example)
     - [X] the page should have a mechanism/cache that will query the data only 1 per hour (preventing repeated requests that return the same value)
+
+**Assignment Notes:**
+- admin login via `coex:coex`
+- admin commands are: `temperature_update`, `temperature_update_async` and `reimport_csv`
+- you will need your own secret key, just run `python utils/new_secret_key.py`
+- cache refresh is set to 2 hours

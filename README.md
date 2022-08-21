@@ -25,3 +25,4 @@ Objectives:
 - admin commands are: `temperature_update`, `temperature_update_async` and `reimport_csv`
 - you will need your own secret key, just run `python utils/new_secret_key.py`
 - cache refresh is set to 2 hours
+- For the purposes of this example only, the admin command `temperature_update` uses the `openmeteo_py` library, while `temperature_update_async` uses the `httpx` library

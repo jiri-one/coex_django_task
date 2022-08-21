@@ -11,11 +11,11 @@ class Command(BaseCommand):
     help = 'Asynchronously update temperature on every SwimPlaces'
 
     async def update_temperatures(self):
-        params = {'latitude': sp.latitude,
-                  'longitude': sp.longitude,
-                   'current_weather': "true"}
-        self.not_updated = 0
         async for sp in SwimPlace.objects.all():
+            params = {'latitude': sp.latitude,
+                      'longitude': sp.longitude,
+                      'current_weather': "true"}
+            self.not_updated = 0
             async with httpx.AsyncClient() as client:
                 try:
                     resp = await client.get("https://api.open-meteo.com/v1/forecast", params=params)

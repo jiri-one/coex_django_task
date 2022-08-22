@@ -26,3 +26,4 @@ Objectives:
 - you will need your own secret key, just run `python utils/new_secret_key.py`
 - cache refresh is set to 2 hours
 - For the purposes of this example only, the admin command `temperature_update` uses the `openmeteo_py` library, while `temperature_update_async` uses the `httpx` library
+- `temperature_update_async` command is super fast because of async tasks. The sync version took about 6,5 minutes (command `temperature_update`), basic async version from brach `async_temp` took more then 2 minutes and the last version from main branch (or from async_test branch) took only 30 seconds!

@@ -2,6 +2,7 @@ from django.core.management.base import BaseCommand, CommandError
 from swimplaces.models import SwimPlace, Category
 import csv
 from pathlib import Path
+from datetime import datetime
 
 FIELDNAMES = """
 id
@@ -51,7 +52,9 @@ class Command(BaseCommand):
         if Path(options['file_name'][0]).is_file():
             # better to handle file structure here ... but for simplicity let it this way
             self.file = options['file_name'][0]
+            start_time = datetime.now()
             self.create_swimplaces(SwimPlace, Category)
-            self.stdout.write(self.style.SUCCESS(f'Successfully imported file: {self.file}'))
+            time = datetime.now() - start_time
+            self.stdout.write(self.style.SUCCESS(f'Successfully imported file: {self.file} and it takes {time.seconds//60} minutes and {time.seconds%60} seconds.'))
         else:
             self.stdout.write(self.style.ERROR('You have to write correct file name.'))

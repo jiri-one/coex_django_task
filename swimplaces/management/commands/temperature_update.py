@@ -24,9 +24,9 @@ class Command(BaseCommand):
         self.stdout.write(self.style.NOTICE('Temperature update has been started. There is lot of data to be updated, please be patient ...'))
         start_time = datetime.now()
         for sp in SwimPlace.objects.all():
-            actual_temperature = self.return_temperature(sp.latitude, sp.longitude)
-            if actual_temperature:
-                Temperature.objects.update_or_create(swimplace=sp, defaults={ "degree": actual_temperature})
+            current_temperature = self.return_temperature(sp.latitude, sp.longitude)
+            if current_temperature is not None:
+                Temperature.objects.update_or_create(swimplace=sp, defaults={ "degree": current_temperature})
         time = datetime.now() - start_time
         cache.clear() # delete old cache
         self.stdout.write(self.style.SUCCESS(f'Successfully have been writen/updated temperatures and it takes {time.seconds//60} minutes and {time.seconds%60} seconds.'))

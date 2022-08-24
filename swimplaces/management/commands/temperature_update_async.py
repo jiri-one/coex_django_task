@@ -17,7 +17,7 @@ class Command(BaseCommand):
         except (JSONDecodeError, BaseException):
             self.not_updated += 1
             actual_temperature = None
-        if actual_temperature:
+        if actual_temperature is not None:
             await Temperature.objects.aupdate_or_create(swimplace=sp, defaults={"degree": actual_temperature})
 
     async def update_temperatures(self):

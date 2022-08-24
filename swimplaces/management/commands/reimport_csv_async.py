@@ -1,6 +1,5 @@
 from django.core.management.base import BaseCommand, CommandError
 from swimplaces.models import SwimPlace, Category
-import csv
 from pathlib import Path
 from datetime import datetime
 import asyncio
